@@ -4,7 +4,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 import models
 from database import get_session
 from hash import hash_password
-from JWT import get_current_user
 
 from schemas import UserCreate, UserResponse
 
@@ -21,7 +20,7 @@ async def create_user(user_data: UserCreate, session: AsyncSession = Depends(get
     return new_user
 
 
-@router.get("/users", status_code=status.HTTP_201_CREATED, response_model=list[UserResponse])
+@router.get("/users", status_code=status.HTTP_200_OK, response_model=list[UserResponse])
 async def get_users_list(session: AsyncSession = Depends(get_session), limit: int = Query(default=50),
                          ):
     users_list = await session.execute(

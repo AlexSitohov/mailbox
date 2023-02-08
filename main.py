@@ -19,8 +19,9 @@ app.include_router(users.router)
 app.include_router(authentication.router)
 app.include_router(mails.router)
 
+# При запуске программы создаются таблицы в бд. Сейчас для создания и обновления таблиц я использую Alembic.
 
-@app.on_event("startup")
-async def init_tables():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+# @app.on_event("startup")
+# async def init_tables():
+#     async with engine.begin() as conn:
+#         await conn.run_sync(Base.metadata.create_all)

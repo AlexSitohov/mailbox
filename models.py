@@ -17,8 +17,6 @@ class User(Base):
     surname = Column(String(50), nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
-    # mails_sen = relationship('Mail', back_populates='from_user')
-    # mails_rec = relationship('Mail', back_populates='to_user')
 
 
 class Mail(Base):
@@ -28,5 +26,5 @@ class Mail(Base):
     mail_body = Column(String(500))
     from_email = Column(String, ForeignKey('users.email'))
     to_email = Column(String, ForeignKey('users.email'))
-    # from_user = relationship('User', back_populates='mails_sen')
-    # to_user = relationship('User', back_populates='mails_rec')
+    created_at = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default=text('now()'))
