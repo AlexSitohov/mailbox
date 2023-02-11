@@ -3,8 +3,9 @@ from datetime import datetime
 
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, String, TIMESTAMP, text, Integer, ForeignKey
-from sqlalchemy.orm import relationship
-from database import Base
+from sqlalchemy.orm import relationship, declarative_base
+
+Base = declarative_base()
 
 
 class User(Base):

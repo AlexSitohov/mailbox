@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routers import users, authentication, mails
 
-from database import Base, engine
+from database import engine
 
 app = FastAPI(title='mailbox')
 

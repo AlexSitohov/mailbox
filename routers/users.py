@@ -21,8 +21,7 @@ async def create_user(user_data: UserCreate, session: AsyncSession = Depends(get
 
 
 @router.get("/users", status_code=status.HTTP_200_OK, response_model=list[UserResponse])
-async def get_users_list(session: AsyncSession = Depends(get_session), limit: int = Query(default=50),
-                         ):
+async def get_users_list(session: AsyncSession = Depends(get_session), limit: int = Query(default=50)):
     users_list = await session.execute(
         select(models.User).order_by(models.User.email.asc()).limit(limit))
     return users_list.scalars().all()
